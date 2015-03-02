@@ -4,6 +4,9 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
+    <services>
+        <service id="in_memory_fact_repository" class="Metinet\AppBundle\Repository\InMemoryFactRepository"></service>
+    </services>
     <!--
     <services>
         <service id="metinet_app.example" class="Metinet\AppBundle\Example">
