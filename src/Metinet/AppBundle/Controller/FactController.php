@@ -44,15 +44,21 @@ class FactController extends Controller
 
     public function submitAction()
     {
-        $fact = $this->get("fact_repository")->pickRandom();
-        $fact = new Fact(1, "hufiahgzdoiuhaziuodhuazoihduiaz");
+        $fact = new Fact(0, "");
 
-        $this->get("doctrine.orm.entity_manager")->flush();
+        $form = $this->createFormBuilder($fact)
+            ->add("number", "number")
+            ->add("summary", "text")
+            ->add("submit", "submit")
+            ->getForm();
+
+        var_dump($this->get("validator")->validate($fact));
+
 
         return $this->render(
             'MetinetAppBundle:Fact:submit.html.twig',
             array(
-                "fact" => $fact
+                "form" => $form->createView()
             )
         );
     }
