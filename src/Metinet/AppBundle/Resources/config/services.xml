@@ -17,6 +17,9 @@
         <service id="fact_repository.doctrine" class="Metinet\AppBundle\Repository\DoctrineFactRepository">
             <argument type="service" id="doctrine.orm.entity_manager"/>
         </service>
+
+        <!-- Alias creation-->
+        <service id="fact_repository" alias="fact_repository.doctrine" />
     </services>
     <!--
     <services>
