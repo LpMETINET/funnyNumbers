@@ -19,6 +19,7 @@ class MysqlFactRepository implements FactRepository
             $username,
             $password
         );
+        $this->facts = $this->findAll();
     }
 
     public function findAll() {
@@ -29,5 +30,11 @@ class MysqlFactRepository implements FactRepository
     public function add(Fact $fact) 
     {
 
+    }
+
+    public function pickRandom()
+    {
+        $key = array_rand($this->facts, 1);
+        return $this->facts[$key];
     }
 }

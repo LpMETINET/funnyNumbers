@@ -18,4 +18,16 @@ class FactController extends Controller
             )
         );
     }
+
+    public function randomAction()
+    {
+        $fact = $this->get("fact_repository")->pickRandom();
+
+        return $this->render(
+            'MetinetAppBundle:Fact:random.html.twig',
+            array(
+                "fact" => $fact
+            )
+        );
+    }
 }

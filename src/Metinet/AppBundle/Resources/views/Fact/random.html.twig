@@ -1,0 +1,10 @@
+{% extends "::base.html.twig" %}
+
+{% block headTitle %}MetinetAppBundle:Fact:random{% endblock %}
+
+{% block body %}
+    <h1>Welcome to the Fact:random page</h1>
+    <ul>
+        <li>{{ fact.number }}</li>
+    </ul>
+{% endblock %}

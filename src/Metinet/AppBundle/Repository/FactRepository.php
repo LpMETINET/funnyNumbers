@@ -8,4 +8,5 @@ interface FactRepository
 {
     public function findAll();
     public function add(Fact $fact);
+    public function pickRandom();
 }
