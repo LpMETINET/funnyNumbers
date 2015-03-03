@@ -13,6 +13,10 @@
             <argument>%database_user%</argument>
             <argument>%database_password%</argument>
         </service>
+
+        <service id="fact_repository.doctrine" class="Metinet\AppBundle\Repository\DoctrineFactRepository">
+            <argument type="service" id="doctrine.orm.entity_manager"/>
+        </service>
     </services>
     <!--
     <services>

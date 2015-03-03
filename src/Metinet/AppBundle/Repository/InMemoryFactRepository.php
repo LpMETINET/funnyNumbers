@@ -2,6 +2,8 @@
 
 namespace Metinet\AppBundle\Repository;
 
+use Metinet\AppBundle\Entity\Fact;
+
 class InMemoryFactRepository implements FactRepository
 {
     private $facts = [];
@@ -10,10 +12,7 @@ class InMemoryFactRepository implements FactRepository
         return $this->facts;
     }
 
-    public function add($number, $summary) {
-        $fact["number"]  = $number;
-        $fact["summary"] = $summary;
-
+    public function add(Fact $fact) {
         $this->facts[] = $fact;
     }
 }

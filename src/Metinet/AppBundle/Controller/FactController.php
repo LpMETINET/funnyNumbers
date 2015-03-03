@@ -9,10 +9,12 @@ class FactController extends Controller
 {
     public function homeAction()
     {
+        $facts = $this->get("fact_repository.doctrine")->findAll();
+
         return $this->render(
             'MetinetAppBundle:Fact:home.html.twig',
             array(
-                "facts" => $this->get("fact_repository.mysql")->findAll()
+                "facts" => $facts
             )
         );
     }

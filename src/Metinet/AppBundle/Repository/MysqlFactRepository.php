@@ -1,6 +1,7 @@
 <?php
 
 namespace Metinet\AppBundle\Repository;
+use Metinet\AppBundle\Entity\Fact;
 use \PDO;
 
 
@@ -25,7 +26,7 @@ class MysqlFactRepository implements FactRepository
         return $query->fetchAll(PDO::FETCH_OBJ);
     }
 
-    public function add($number, $summary)
+    public function add(Fact $fact) 
     {
 
     }
