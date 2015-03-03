@@ -41,4 +41,19 @@ class FactController extends Controller
             )
         );
     }
+
+    public function submitAction()
+    {
+        $fact = $this->get("fact_repository")->pickRandom();
+        $fact = new Fact(1, "hufiahgzdoiuhaziuodhuazoihduiaz");
+
+        $this->get("doctrine.orm.entity_manager")->flush();
+
+        return $this->render(
+            'MetinetAppBundle:Fact:submit.html.twig',
+            array(
+                "fact" => $fact
+            )
+        );
+    }
 }

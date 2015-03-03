@@ -9,5 +9,7 @@
         <default key="_controller">MetinetAppBundle:Fact:random</default>
     </route>
 
-
+    <route id="submit" path="/submit">
+        <default key="_controller">MetinetAppBundle:Fact:submit</default>
+    </route>
 </routes>
