@@ -29,11 +29,6 @@ class DoctrineFactRepository implements FactRepository
         /*****************************************/
     }
 
-    public function add(Fact $fact)
-    {
-
-    }
-
     public function pickRandom()
     {
         $connection = $this->entityManager->getConnection();
@@ -46,5 +41,10 @@ class DoctrineFactRepository implements FactRepository
 
         $query->setParameter("randomId", $randomId);
         return $query->getSingleResult();
+    }
+
+    public function save(Fact $fact)
+    {
+        $this->entityManager->persist($fact);
     }
 }

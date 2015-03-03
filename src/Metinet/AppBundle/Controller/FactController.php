@@ -2,6 +2,7 @@
 
 namespace Metinet\AppBundle\Controller;
 
+use Metinet\AppBundle\Entity\Fact;
 use Metinet\AppBundle\Repository\InMemoryFactRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
@@ -22,6 +23,16 @@ class FactController extends Controller
     public function randomAction()
     {
         $fact = $this->get("fact_repository")->pickRandom();
+        $fact = new Fact(1, "hufiahgzdoiuhaziuodhuazoihduiaz");
+        $this->get("fact_repository")->save($fact);
+        $fact = new Fact(1, "hufiahgzdoiuhaziuodhuazoihduiaz");
+        $this->get("fact_repository")->save($fact);
+        $fact = new Fact(1, "hufiahgzdoiuhaziuodhuazoihduiaz");
+        $this->get("fact_repository")->save($fact);
+        $fact = new Fact(1, "hufiahgzdoiuhaziuodhuazoihduiaz");
+        $this->get("fact_repository")->save($fact);
+
+        $this->get("doctrine.orm.entity_manager")->flush();
 
         return $this->render(
             'MetinetAppBundle:Fact:random.html.twig',

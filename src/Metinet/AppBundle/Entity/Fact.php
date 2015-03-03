@@ -6,6 +6,32 @@ class Fact
 {
     protected $id;
     protected $number;
+    protected $summary;
+
+    public function __construct($number, $summary)
+    {
+        $this->number = $number;
+        $this->summary = $summary;
+    }
+
+    public function setId($id)
+    {
+        if (null !== $this->id) {
+            throw new \Exception("Can't update Entity id");
+        }
+
+        $this->id = $id;
+    }
+
+    public function setNumber($number)
+    {
+        $this->number = $number;
+    }
+
+    public function setSummary($summary)
+    {
+        $this->summary = $summary;
+    }
 
     public function getId()
     {
@@ -21,7 +47,6 @@ class Fact
     {
         return $this->summary;
     }
-    protected $summary;
 
 
 }

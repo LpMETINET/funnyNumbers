@@ -7,13 +7,6 @@
     <services>
         <service id="fact_repository.in_memory" class="Metinet\AppBundle\Repository\InMemoryFactRepository" />
 
-        <service id="fact_repository.mysql" class="Metinet\AppBundle\Repository\MysqlFactRepository">
-            <argument>%database_host%</argument>
-            <argument>%database_name%</argument>
-            <argument>%database_user%</argument>
-            <argument>%database_password%</argument>
-        </service>
-
         <service id="fact_repository.doctrine" class="Metinet\AppBundle\Repository\DoctrineFactRepository">
             <argument type="service" id="doctrine.orm.entity_manager"/>
         </service>
