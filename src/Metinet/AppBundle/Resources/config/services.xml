@@ -9,9 +9,9 @@
 
         <service id="fact_repository.mysql" class="Metinet\AppBundle\Repository\MysqlFactRepository">
             <argument>%database_host%</argument>
+            <argument>%database_name%</argument>
             <argument>%database_user%</argument>
             <argument>%database_password%</argument>
-            <argument>%database_name%</argument>
         </service>
     </services>
     <!--
