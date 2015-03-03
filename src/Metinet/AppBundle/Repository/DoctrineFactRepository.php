@@ -15,11 +15,17 @@ class DoctrineFactRepository implements FactRepository
     }
 
     public function findAll() {
+        $query = $this->entityManager->getRepository('MetinetAppBundle:Fact')->createQueryBuilder('f');
+        return $query->getQuery()->getResult();
+        /*****************************************/
+        /** SIMPLEST WAY
         $query = $this->entityManager->createQuery(
             'SELECT f
             FROM MetinetAppBundle:Fact f'
         );
         return $query->getResult();
+         * */
+        /*****************************************/
     }
 
     public function add(Fact $fact)
