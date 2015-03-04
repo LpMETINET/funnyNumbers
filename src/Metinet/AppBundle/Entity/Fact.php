@@ -8,7 +8,7 @@ class Fact
     protected $number;
     protected $summary;
 
-    public function __construct($number, $summary)
+    public function __construct($number = null, $summary = null)
     {
         $this->number = $number;
         $this->summary = $summary;

@@ -46,5 +46,6 @@ class DoctrineFactRepository implements FactRepository
     public function save(Fact $fact)
     {
         $this->entityManager->persist($fact);
+        $this->entityManager->flush();
     }
 }

@@ -4,5 +4,9 @@
 
 {% block body %}
     <h1>Welcome to the Fact:submit page</h1>
-    {{ form(form) }}
+    <form action="{{ path("submit") }}" method="POST">
+        <div class="form-group">
+            {{ form_widget(form) }}
+        </div>
+    </form>
 {% endblock %}

@@ -3,8 +3,11 @@
 namespace Metinet\AppBundle\Controller;
 
 use Metinet\AppBundle\Entity\Fact;
-use Metinet\AppBundle\Repository\InMemoryFactRepository;
+use Metinet\AppBundle\Form\Type\FactType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class FactController extends Controller
 {
@@ -42,19 +45,22 @@ class FactController extends Controller
         );
     }
 
-    public function submitAction()
+    public function submitAction(Request $request)
     {
-        $fact = new Fact(0, "");
+        $fact = new Fact(-1, "Valeur par défaut");
 
-        $form = $this->createFormBuilder($fact)
-            ->add("number", "number")
-            ->add("summary", "text")
-            ->add("submit", "submit")
-            ->getForm();
+        $form = $this->createForm(new FactType(), $fact);
 
-        var_dump($this->get("validator")->validate($fact));
+        if ($request->isMethod("POST")) {
+            $form->submit($request);
+            if ($form->isValid()) {
+                $this->get('fact_repository')->save($fact);
 
-
+                return new RedirectResponse(
+                    $this->generateUrl("home")
+                );
+            }
+        }
         return $this->render(
             'MetinetAppBundle:Fact:submit.html.twig',
             array(
