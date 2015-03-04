@@ -1,0 +1,14 @@
+{% extends "::base.html.twig" %}
+
+{% block headTitle %}MetinetAppBundle:Fact:validate{% endblock %}
+
+{% block body %}
+    <h1>Welcome to the Fact:validate page</h1>
+    {% for fact in facts %}
+        {% include 'MetinetAppBundle:Fact/partials:factItem.html.twig' %}
+        <div aria-label="Large button group" role="group" class="btn-group btn-group-lg">
+            <a class="btn btn-info" type="button" href="{{ path("validation", {state: "accepted", id: fact.id}) }}">Accepter</a>
+            <a class="btn btn-danger" type="button"  href="{{ path("validation", {state: "refused", id: fact.id}) }}">Refuser</a>
+        </div>
+    {% endfor %}
+{% endblock %}

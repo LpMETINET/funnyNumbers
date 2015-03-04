@@ -23,6 +23,13 @@ class FactType extends AbstractType
                 )
             )
             ->add(
+                "email",
+                "email",
+                array(
+                    "required" => true
+                )
+            )
+            ->add(
                 "submit",
                 "submit",
                 array(

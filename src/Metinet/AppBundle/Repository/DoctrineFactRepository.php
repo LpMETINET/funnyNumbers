@@ -4,6 +4,7 @@ namespace Metinet\AppBundle\Repository;
 
 use Doctrine\ORM\EntityManager;
 use Metinet\AppBundle\Entity\Fact;
+use Metinet\AppBundle\Entity\FactState;
 
 class DoctrineFactRepository implements FactRepository
 {
@@ -32,15 +33,47 @@ class DoctrineFactRepository implements FactRepository
     public function pickRandom()
     {
         $connection = $this->entityManager->getConnection();
-        $ids = $connection->fetchAll("SELECT id FROM fact");
+        $ids = $connection->fetchAll("SELECT id FROM fact WHERE state = 'accepted'");
         $randomId = $ids[array_rand($ids)]["id"];
 
-        $query = $this->entityManager->createQuery(
-            "SELECT fact FROM MetinetAppBundle:Fact fact WHERE fact.id = :randomId"
-        );
+        return $this->entityManager->getRepository("MetinetAppBundle:Fact")->findOneBy(array(
+            "id" => $randomId
+        ));
+    }
 
-        $query->setParameter("randomId", $randomId);
-        return $query->getSingleResult();
+    public function findAccepted()
+    {
+        $queryBuilder = $this->getQueryBuilderByState();
+        $queryBuilder->setParameter("state", FactState::ACCEPTED);
+
+        return $queryBuilder->getQuery()->getResult();
+    }
+
+    private function getQueryBuilderByState()
+    {
+        $queryBuilder = $this->entityManager->createQueryBuilder();
+        $queryBuilder
+            ->select("fact")
+            ->from("MetinetAppBundle:Fact", "fact")
+            ->where(
+                $queryBuilder->expr()->like(
+                    "fact.state",
+                    ":state")
+            );
+
+        return $queryBuilder;
+    }
+
+    public function findPending()
+    {
+        return $this->entityManager->getRepository("MetinetAppBundle:Fact")->findBy(array(
+            "state" => "pending"
+        ));
+    }
+
+    public function findOne($id)
+    {
+        return $this->entityManager->getRepository("MetinetAppBundle:Fact")->find($id);
     }
 
     public function save(Fact $fact)

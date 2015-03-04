@@ -15,6 +15,7 @@ class Builder extends ContainerAware
         $menu->addChild('Home', array('route' => 'home'));
         $menu->addChild('Random', array('route' => 'random'));
         $menu->addChild('Submit', array('route' => 'submit'));
+        $menu->addChild("To Validate", array('route' => 'to_validate'));
 
 /*        // access services from the container!
         $em = $this->container->get('doctrine')->getManager();

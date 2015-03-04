@@ -2,16 +2,22 @@
 
 namespace Metinet\AppBundle\Entity;
 
+use Symfony\Component\Config\Definition\Exception\Exception;
+
 class Fact
 {
     protected $id;
     protected $number;
     protected $summary;
+    protected $email;
+    protected $state;
 
-    public function __construct($number = null, $summary = null)
+    public function __construct($number = null, $summary = null, $email = null)
     {
         $this->number = $number;
         $this->summary = $summary;
+        $this->email = $email;
+        $this->state = "pending";
     }
 
     public function setId($id)
@@ -48,5 +54,30 @@ class Fact
         return $this->summary;
     }
 
+    public function getEmail()
+    {
+        return $this->email;
+    }
 
+    public function setEmail($email)
+    {
+        $this->email = $email;
+    }
+
+    public function getState()
+    {
+        return $this->state;
+    }
+
+    public function setState($state)
+    {
+        if (!in_array($state, [
+            FactState::PENDING,
+            FactState::ACCEPTED,
+            FactState::REFUSED
+        ])) {
+            throw new Exception("Invalid Status");
+        }
+        $this->state = $state;
+    }
 }
