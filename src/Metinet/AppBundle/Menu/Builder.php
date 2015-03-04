@@ -17,6 +17,16 @@ class Builder extends ContainerAware
         $menu->addChild('Submit', array('route' => 'submit'));
         $menu->addChild("To Validate", array('route' => 'to_validate'));
 
+        if ($this->container->get('security.context')->isGranted('IS_AUTHENTICATED_FULLY')) {
+            $logoutItem = $menu->addChild('Logout', array('route' => 'logout'));
+            $logoutItem
+                ->setLinkAttributes(array(
+                    'id' => 'logout-link',
+                    'class' => 'btn btn-default',
+                ))
+            ;
+        }
+
 /*        // access services from the container!
         $em = $this->container->get('doctrine')->getManager();
         // findMostRecent and Blog are just imaginary examples

@@ -13,11 +13,18 @@
         <default key="_controller">MetinetAppBundle:Fact:submit</default>
     </route>
 
-    <route id="to_validate" path="/to-validate">
+    <route id="to_validate" path="/admin/to-validate">
         <default key="_controller">MetinetAppBundle:Fact:toValidate</default>
     </route>
 
-    <route id="validation" path="/validation/{state}/{id}">
+    <route id="validation" path="/admin/validation/{state}/{id}">
         <default key="_controller">MetinetAppBundle:Fact:validation</default>
     </route>
+
+    <route id="login" path="/login">
+        <default key="_controller">MetinetAppBundle:Security:login</default>
+    </route>
+
+    <route id="login_check" path="/login_check" />
+    <route id="logout" path="/logout" />
 </routes>
