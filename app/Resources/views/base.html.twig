@@ -17,7 +17,9 @@
         <div class="jumbotron">
             <h1>Funny Numbers</h1>
         </div>
-        {{ knp_menu_render('MetinetAppBundle:Builder:mainMenu', {'depth': 2, 'currentClass': "active"}) }}
+        <nav id="main-menu">
+            {{ knp_menu_render('MetinetAppBundle:Builder:mainMenu', {'currentClass': "active"}) }}
+        </nav>
         {% block body %}{% endblock %}
     </div>
     {% block javascript %}
