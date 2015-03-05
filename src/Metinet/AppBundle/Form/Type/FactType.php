@@ -13,27 +13,41 @@ class FactType extends AbstractType
         $builder
             ->add(
                 "number",
-                "number"
+                "number",
+                array(
+                    "attr" => array(
+                        "class" => "form-control"
+                    )
+                )
             )
             ->add(
                 "summary",
                 "textarea",
                 array(
-                    "required" => false
+                    "required" => false,
+                    "attr" => array(
+                        "class" => "form-control"
+                    )
                 )
             )
             ->add(
                 "email",
                 "email",
                 array(
-                    "required" => true
+                    "required" => true,
+                    "attr" => array(
+                        "class" => "form-control"
+                    )
                 )
             )
             ->add(
                 "submit",
                 "submit",
                 array(
-                    "label" => "Submit"
+                    "label" => "Submit",
+                    "attr"  => array(
+                        'class' => 'form-control btn btn-primary'
+                    )
                 )
             );
     }

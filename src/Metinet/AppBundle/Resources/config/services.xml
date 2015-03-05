@@ -11,8 +11,13 @@
             <argument type="service" id="doctrine.orm.entity_manager"/>
         </service>
 
+        <service id="user_repository.doctrine" class="Metinet\AppBundle\Repository\UserRepository">
+            <argument type="service" id="doctrine.orm.entity_manager"/>
+        </service>
+
         <!-- Alias creation-->
         <service id="fact_repository" alias="fact_repository.doctrine" />
+        <service id="user_repository" alias="user_repository.doctrine" />
     </services>
     <!--
     <services>

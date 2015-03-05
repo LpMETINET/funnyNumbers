@@ -1,0 +1,18 @@
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                    http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+
+    <entity name="Metinet\AppBundle\Entity\User" table="user_account">
+        <unique-constraints>
+            <unique-constraint columns="username" name="u_username" />
+        </unique-constraints>
+        <id name="id" type="integer" column="id">
+            <generator strategy="AUTO" />
+        </id>
+        <field name="username" column="username" type="string" />
+        <field name="password" column="password" type="string" />
+        <field name="salt"     column="salt"     type="string" nullable="true"/>
+        <field name="roles"    column="roles"    type="array"  />
+    </entity>
+</doctrine-mapping>
