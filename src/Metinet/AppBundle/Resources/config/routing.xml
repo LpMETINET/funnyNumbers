@@ -35,4 +35,8 @@
     <route id="facts_api" path="/api/facts">
         <default key="_controller">MetinetAppBundle:API:home</default>
     </route>
+
+    <route id="fact_api_new" path="/api/fact/new">
+        <default key="_controller">MetinetAppBundle:API:new</default>
+    </route>
 </routes>
