@@ -3,10 +3,7 @@
 security:
     # http://symfony.com/doc/current/book/security.html#encoding-the-user-s-password
     encoders:
-        Symfony\Component\Security\Core\User\User:
-            algorithm:   sha1
-            iterations: 1
-            encode_as_base64: false
+        Metinet\AppBundle\Entity\User: plaintext
 
     # http://symfony.com/doc/current/book/security.html#hierarchical-roles
     role_hierarchy:
@@ -15,6 +12,8 @@ security:
 
     # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
     providers:
+        user_repository:
+          id: user_repository
         in_memory:
             memory:
                 users:
@@ -35,6 +34,7 @@ security:
 
         # secures part of the application
         secured_area:
+            provider: user_repository
             pattern:    ^/
             anonymous: ~
             form_login:
