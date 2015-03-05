@@ -80,4 +80,13 @@ class Fact
         }
         $this->state = $state;
     }
+
+    public function __toString()
+    {
+        return sprintf(
+            "%s : %s",
+            $this->getNumber(),
+            $this->getSummary()
+            );
+    }
 }

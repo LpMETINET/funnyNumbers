@@ -31,4 +31,8 @@
 
     <route id="login_check" path="/login_check" />
     <route id="logout" path="/logout" />
+
+    <route id="facts_api" path="/api/facts">
+        <default key="_controller">MetinetAppBundle:API:home</default>
+    </route>
 </routes>

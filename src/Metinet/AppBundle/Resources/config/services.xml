@@ -15,6 +15,8 @@
             <argument type="service" id="doctrine.orm.entity_manager"/>
         </service>
 
+        <service id="json_serializer" class="Metinet\AppBundle\Transformer\JsonSerializer" />
+
         <!-- Alias creation-->
         <service id="fact_repository" alias="fact_repository.doctrine" />
         <service id="user_repository" alias="user_repository.doctrine" />
