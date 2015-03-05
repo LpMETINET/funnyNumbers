@@ -44,7 +44,10 @@ class FactType extends AbstractType
                 "submit",
                 "submit",
                 array(
-                    "label" => "Submit"
+                    "label" => "Submit",
+                    "attr"  => array(
+                        'class' => 'form-control btn btn-primary'
+                    )
                 )
             );
     }

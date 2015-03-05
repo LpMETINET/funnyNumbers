@@ -25,6 +25,9 @@ class Builder extends ContainerAware
                     'class' => 'btn btn-default',
                 ))
             ;
+        } else {
+            $menu->addChild("SignUp", array('route' => 'register'));
+            $menu->addChild("SignIn", array('route' => 'login'));
         }
 
 /*        // access services from the container!

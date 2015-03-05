@@ -4,6 +4,7 @@ namespace Metinet\AppBundle\Repository;
 
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
+use Metinet\AppBundle\Entity\User;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\User\UserProviderInterface;
 
@@ -51,5 +52,9 @@ class UserRepository implements UserProviderInterface
         return $class === "\\Metinet\\AppBundle\\Entity\\User";
     }
 
-
+    public function save(User $user)
+    {
+        $this->entityManager->persist($user);
+        $this->entityManager->flush();
+    }
 }

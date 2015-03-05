@@ -25,6 +25,10 @@
         <default key="_controller">MetinetAppBundle:Security:login</default>
     </route>
 
+    <route id="register" path="/register">
+        <default key="_controller">MetinetAppBundle:Security:register</default>
+    </route>
+
     <route id="login_check" path="/login_check" />
     <route id="logout" path="/logout" />
 </routes>

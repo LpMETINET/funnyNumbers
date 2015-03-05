@@ -12,7 +12,9 @@ class User implements UserInterface
     protected $salt;
     protected $roles;
 
-    public function __construct() {
+    public function __construct($username = null, $password = null) {
+        $this->username = $username;
+        $this->password = $password;
         $this->roles = ['ROLE_USER'];
     }
 

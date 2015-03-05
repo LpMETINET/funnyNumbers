@@ -12,7 +12,7 @@
         </id>
         <field name="username" column="username" type="string" />
         <field name="password" column="password" type="string" />
-        <field name="salt"     column="salt"     type="string" />
+        <field name="salt"     column="salt"     type="string" nullable="true"/>
         <field name="roles"    column="roles"    type="array"  />
     </entity>
 </doctrine-mapping>
